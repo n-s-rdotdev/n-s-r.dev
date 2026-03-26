@@ -1,0 +1,64 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "n-s-r.dev",
+  "homepage": "https://n-s-r.dev/components",
+  "items": [
+    {
+      "name": "better-auth",
+      "title": "Better Auth",
+      "description": "A collection of authentication components and utilities for Next.js applications.",
+      "type": "registry:block",
+      "dependencies": [
+        "better-auth"
+      ],
+      "files": [
+        {
+          "path": "src/registry/lib/auth/auth.ts",
+          "type": "registry:lib",
+          "target": "lib/auth.ts"
+        },
+        {
+          "path": "src/registry/lib/auth-client/auth-client.ts",
+          "type": "registry:lib",
+          "target": "lib/auth-client/auth-client.ts"
+        },
+        {
+          "path": "src/registry/api/auth/route/route.ts",
+          "type": "registry:file",
+          "target": "api/auth/route/route.ts"
+        }
+      ]
+    },
+    {
+      "name": "drizzle",
+      "title": "Drizzle ORM",
+      "description": "A collection of database utilities and configurations for Drizzle ORM.",
+      "type": "registry:block",
+      "dependencies": [
+        "drizzle-orm",
+        "@neondatabase/serverless"
+      ],
+      "devDependencies": [
+        "drizzle-kit",
+        "tsx"
+      ],
+      "files": [
+        {
+          "path": "src/registry/db/db/db.ts",
+          "type": "registry:file",
+          "target": "db/index.ts"
+        },
+        {
+          "path": "src/registry/db/schema/schema.ts",
+          "type": "registry:file",
+          "target": "db/schema.ts"
+        },
+        {
+          "path": "src/registry/db/config/drizzle-config/drizzle.config.ts",
+          "type": "registry:file",
+          "target": "drizzle.config.ts"
+        }
+      ]
+    }
+  ]
+}

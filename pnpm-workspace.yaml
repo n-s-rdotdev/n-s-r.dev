@@ -1,0 +1,8 @@
+onlyBuiltDependencies:
+  - core-js
+  - esbuild
+  - msw
+  - protobufjs
+  - puppeteer
+  - sharp
+  - unrs-resolver

@@ -1,0 +1,103 @@
+---
+title: Drizzle Setup
+description: Install and setup Drizzle + Neon in you project with just one command.
+image: https://assets.chanhdai.com/images/blog/copy-button.webp
+category: components
+createdAt: 2026-03-26
+updatedAt: 2026-03-26
+---
+
+## Features
+
+- This is the setup for Drizzle + Neon in your Next.js project.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+<Steps>
+
+<Step> Add the complete Drizzle setup.</Step>
+
+```bash
+npx shadcn@latest add @n-s-rdotdev/drizzle
+```
+
+<Step>Create a .env file in the root of your project and add your database connection variable</Step>
+
+```bash
+DATABASE_URL= 
+```
+
+<Step>Applying changes to the database</Step>
+
+```bash
+npx drizzle-kit push
+```
+
+<Step>[Optional] If you are using `src` package, move `src/drizzle.config.ts` to `root`.</Step>
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install drizzle-orm @neondatabase/serverless
+```
+
+<Step>Install the following dev dependencies</Step>
+
+```bash
+npm install -D drizzle-kit tsx
+```
+
+<Step>Connect Drizzle ORM to the database</Step>
+
+<ComponentSource
+  src="src/db/index.ts"
+  title="/db/index.ts"
+  showLineNumbers
+/>
+
+<Step>Create a table</Step>
+
+<ComponentSource
+  src="src/db/schema.ts"
+  title="/db/schema.ts"
+  showLineNumbers
+/>
+
+<Step>Setup Drizzle config file</Step>
+
+> Note: Add this file to the `root` directory.
+
+<ComponentSource
+  src="drizzle.config.ts"
+  title="drizzle.config.ts"
+  showLineNumbers
+/>
+
+<Step>Applying changes to the database</Step>
+
+```bash
+npx drizzle-kit push
+```
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## References
+
+- See [Drizzle](https://orm.drizzle.team/docs/get-started/neon-new) documentation for more information.

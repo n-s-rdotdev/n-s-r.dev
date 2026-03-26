@@ -1,0 +1,99 @@
+---
+title: Better Auth Setup
+description: Install and setup Better Auth in you project with just one command.
+image: https://assets.chanhdai.com/images/blog/copy-button.webp
+category: components
+createdAt: 2026-03-26
+updatedAt: 2026-03-26
+---
+
+## Note
+
+- If you are using drizzle, make sure it is installed and configured.
+- If `Drizzle` is not yet configured, try [Drizzle Setup](https://n-s-r.dev/components/drizzle-setup) for quick installation.
+
+## Installation
+
+<CodeTabs>
+
+<TabsListInstallType />
+
+<TabsContent value="cli">
+<Steps>
+
+<Step> Add the complete Better Auth setup.</Step>
+
+```bash
+npx shadcn@latest add @n-s-rdotdev/better-auth
+```
+
+<Step>Create a .env file in the root of your project and add your database connection variable</Step>
+
+> You may use `openssl rand -base64 32` to generate a new secret.
+
+```bash
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=http://localhost:3000 # Base URL of your app
+```
+
+<Step>Create Database Tables</Step>
+
+```bash
+npx auth@latest generate
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies</Step>
+
+```bash
+npm install better-auth
+```
+
+<Step>Create A Better Auth Instance and configure Database</Step>
+
+> If you are using db connection other that `Drizzle`, refer [Better-Auth Docs](https://better-auth.com/docs/installation#configure-database) for its implementation.
+
+<ComponentSource
+  src="src/registry/lib/auth/auth.ts"
+  title="/lib/auth.ts"
+  showLineNumbers
+/>
+
+<Step>Create Client Instance</Step>
+
+<ComponentSource
+  src="src/registry/lib/auth-client/auth-client.ts"
+  title="/lib/auth-client.ts"
+  showLineNumbers
+/>
+
+<Step>Mount Handler</Step>
+
+<ComponentSource
+  src="src/registry/api/auth/route/route.ts"
+  title="/app/api/auth/[...all]/route.ts"
+  showLineNumbers
+/>
+
+<Step>Create Database Tables</Step>
+
+```bash
+npx auth@latest generate
+```
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## References
+
+- See [Better Auth](https://better-auth.com/docs/installation) documentation for more information.

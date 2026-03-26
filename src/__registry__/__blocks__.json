@@ -1,0 +1,10 @@
+[
+  {
+    "name": "better-auth",
+    "description": "A collection of authentication components and utilities for Next.js applications."
+  },
+  {
+    "name": "drizzle",
+    "description": "A collection of database utilities and configurations for Drizzle ORM."
+  }
+]

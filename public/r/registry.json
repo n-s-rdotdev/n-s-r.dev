@@ -1,0 +1,66 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ncdai",
+  "homepage": "https://chanhdai.com/components",
+  "items": [
+    {
+      "name": "better-auth",
+      "title": "Better Auth",
+      "author": "rakshith <rakshith@n-s-r.dev>",
+      "description": "A collection of authentication components and utilities for Next.js applications.",
+      "dependencies": [
+        "better-auth"
+      ],
+      "files": [
+        {
+          "path": "src/registry//lib/auth/auth.ts",
+          "type": "registry:lib",
+          "target": "src/lib/auth.ts"
+        },
+        {
+          "path": "src/registry//lib/auth-client/auth-client.ts",
+          "type": "registry:lib",
+          "target": "src/lib/auth-client/auth-client.ts"
+        },
+        {
+          "path": "src/registry//api/auth/route/route.ts",
+          "type": "registry:file",
+          "target": "src/api/auth/route/route.ts"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "drizzle",
+      "title": "Drizzle ORM",
+      "author": "rakshith <rakshith@n-s-r.dev>",
+      "description": "A collection of database utilities and configurations for Drizzle ORM.",
+      "dependencies": [
+        "drizzle-orm",
+        "@neondatabase/serverless"
+      ],
+      "devDependencies": [
+        "drizzle-kit",
+        "tsx"
+      ],
+      "files": [
+        {
+          "path": "src/registry//db/db/db.ts",
+          "type": "registry:file",
+          "target": "db/index.ts"
+        },
+        {
+          "path": "src/registry//db/schema/schema.ts",
+          "type": "registry:file",
+          "target": "db/schema.ts"
+        },
+        {
+          "path": "src/registry//db/config/drizzle-config/drizzle.config.ts",
+          "type": "registry:file",
+          "target": "drizzle.config.ts"
+        }
+      ],
+      "type": "registry:block"
+    }
+  ]
+}
