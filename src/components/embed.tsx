@@ -46,11 +46,17 @@ export function FramedImage({
 }: React.ComponentProps<"img"> & {
   canZoom?: boolean
 }) {
-  // eslint-disable-next-line jsx-a11y/alt-text
+  // `next/image` is not a good fit here because this wrapper accepts arbitrary img props/sources.
+  // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
   const image = <img {...props} />
 
   return (
-    <figure className="relative [&_img]:rounded-xl">
+    <figure
+      className={cn(
+        "relative [&_img]:rounded-xl",
+        canZoom && "[&_img]:cursor-zoom-in"
+      )}
+    >
       {image}
 
       <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />

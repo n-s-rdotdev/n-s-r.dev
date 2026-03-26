@@ -1,10 +1,8 @@
 import { ArrowUpRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { ForwardRefExoticComponent, RefAttributes } from "react"
-import { IconProps } from "@tabler/icons-react"
+
 import { SocialLink } from "../types/social-links"
-import Image from "next/image"
 import { SocialLinkIcon } from "./social-link/social-link-icon"
 
 const UTM_PARAMS = {

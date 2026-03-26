@@ -1,8 +1,4 @@
 import type { LucideProps } from "lucide-react"
-import {
-  BriefcaseBusinessIcon
-} from "lucide-react"
-
 import { IconBrandGithubFilled, IconBrandLinkedinFilled, IconBrandXFilled, IconCodeCircle2Filled } from "@tabler/icons-react"
 import type { SocialLinkIcon } from "../../types/social-links"
 

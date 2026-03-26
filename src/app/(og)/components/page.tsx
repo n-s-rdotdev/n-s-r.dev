@@ -1,4 +1,4 @@
-import { Block, BlockContent, BlockDescription, BlockHeader, BlockSubHeader } from '@/components/block'
+import { Block, BlockContent, BlockDescription, BlockSubHeader } from '@/components/block'
 import { BlockSeparator } from '@/components/block'
 import { Separator as LineSeparator } from '@/components/ui/separator'
 import { ComponentsHeader } from '@/features/components-page/components/components-header'

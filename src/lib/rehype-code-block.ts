@@ -3,8 +3,9 @@ import rehypePrettyCode from "rehype-pretty-code"
 import { visit } from "unist-util-visit"
 
 import type { UnistNode, UnistTree } from "@/types/unist"
+import type { Plugin } from "@/types/unified"
 
-export function rehypeCodeRawString() {
+export const rehypeCodeRawString: Plugin = () => {
   return (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {
       if (node?.type === "element" && node?.tagName === "pre") {
@@ -40,7 +41,7 @@ export function rehypeHighlightCode() {
   })
 }
 
-export function rehypeHighlightCodeRawString() {
+export const rehypeHighlightCodeRawString: Plugin = () => {
   return (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {
       if (node?.type === "element" && node?.tagName === "figure") {

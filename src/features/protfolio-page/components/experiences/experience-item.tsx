@@ -1,7 +1,5 @@
 import Image from "next/image"
 
-import { addQueryParams } from "@/utils/url"
-
 import type { Experience } from "../../types/experiences"
 import { ExperiencePositionItem } from "./experience-position-item"
 

@@ -1,7 +1,3 @@
-import React from 'react'
-import ComponentWrapper from './component-wrapper'
-import { Button } from './ui/button'
-
 export function Footer() {
   return (
     <>

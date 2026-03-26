@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import ComponentWrapper from "./component-wrapper";
 
 function Block({ children, className }: { children: React.ReactNode, className?: string }) {
   return (

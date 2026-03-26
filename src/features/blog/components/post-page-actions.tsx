@@ -3,7 +3,7 @@
 "use client"
 
 import { ChevronDownIcon } from "lucide-react"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 
 import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
@@ -15,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SITE_INFO } from "@/config/site"
+import { useIsClient } from "@/hooks/use-is-client"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
 import { CopyStateIcon } from "@/components/ui/copy-button"
 import { toAbsoluteUrl } from "@/utils/url"
@@ -96,11 +97,8 @@ export function ViewOptions({
   markdownUrl: string
   isComponent?: boolean
 }) {
-  const [origin, setOrigin] = useState(SITE_INFO.url)
-
-  useEffect(() => {
-    setOrigin(window.location.origin)
-  }, [])
+  const isClient = useIsClient()
+  const origin = isClient ? window.location.origin : SITE_INFO.url
 
   const items = useMemo(() => {
     const fullMarkdownUrl = toAbsoluteUrl(markdownUrl, origin)

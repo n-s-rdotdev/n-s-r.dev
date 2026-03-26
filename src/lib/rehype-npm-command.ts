@@ -1,8 +1,9 @@
 import { visit } from "unist-util-visit"
 
 import type { UnistNode, UnistTree } from "@/types/unist"
+import type { Plugin } from "@/types/unified"
 
-export function rehypeNpmCommand() {
+export const rehypeNpmCommand: Plugin = () => {
   // Thanks @shadcn/ui
   return (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {

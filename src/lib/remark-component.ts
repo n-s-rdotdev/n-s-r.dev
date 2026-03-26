@@ -5,10 +5,11 @@ import { visit } from "unist-util-visit"
 
 import { Index } from "@/__registry__/index"
 import type { UnistNode, UnistTree } from "@/types/unist"
+import type { Plugin } from "@/types/unified"
 
 import { fixImport } from "./registry"
 
-export function remarkComponent() {
+export const remarkComponent: Plugin = () => {
   return async (tree: UnistTree) => {
     visit(tree, (node: UnistNode, index, parent) => {
       // src prop overrides both name and fileName.
