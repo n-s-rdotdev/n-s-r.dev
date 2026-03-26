@@ -6,6 +6,7 @@ import { visit } from "unist-util-visit"
 
 import { Index } from "@/__registry__/index"
 import type { UnistNode, UnistTree } from "@/types/unist"
+import type { Plugin } from "@/types/unified"
 
 import { fixImport } from "./registry"
 
@@ -51,7 +52,7 @@ function getComponentFilePath(name: string, fileName?: string) {
   )
 }
 
-export function rehypeComponent() {
+export const rehypeComponent: Plugin = () => {
   // Thanks @shadcn/ui
   return async (tree: UnistTree) => {
     visit(tree, (node: UnistNode) => {

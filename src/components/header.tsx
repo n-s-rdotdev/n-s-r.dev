@@ -12,7 +12,6 @@
 //   )
 // }
 
-import dynamic from "next/dynamic"
 import Link from "next/link"
 import { Suspense } from "react"
 
@@ -26,8 +25,6 @@ import { NSRMark } from "./n-s-r-mark"
 import { SiteHeaderMark } from "./site-header-mark"
 import { ThemeToggle } from "./theme-toggle"
 import { Separator } from "./ui/separator"
-import ComponentWrapper from "./component-wrapper"
-
 
 // const CommandMenu = dynamic(() =>
 //   import("@/components/command-menu").then((mod) => mod.CommandMenu)

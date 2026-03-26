@@ -1,20 +1,7 @@
 import {
-  BriefcaseBusinessIcon,
-  CopyIcon,
   FileIcon,
-  GalleryHorizontalEndIcon,
-  LucideCloudDrizzle,
-  MoonStarIcon,
-  MouseIcon,
-  QuoteIcon,
-  SeparatorHorizontalIcon,
-  SquareTerminalIcon,
   TerminalSquareIcon,
-  ToggleLeftIcon,
-  VibrateIcon,
-  ZapIcon,
 } from "lucide-react"
-import Image from "next/image"
 
 type IconProps = React.HTMLAttributes<SVGElement>
 

@@ -64,6 +64,8 @@ export function TestimonialAvatarImg({
   ...props
 }: ComponentProps<"img">) {
   return (
+    // `next/image` is not a good fit for this generic primitive because callers can pass arbitrary image props/sources.
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       data-slot="avatar-img"
       className={cn("size-8 rounded-full select-none", className)}

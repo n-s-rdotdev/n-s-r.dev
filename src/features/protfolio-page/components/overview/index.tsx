@@ -1,22 +1,34 @@
-import { Block, BlockContent } from "@/components/block";
-import { IntroItem, IntroItemContent, IntroItemIcon, IntroItemLink } from "@/components/intro-item";
-import { IconLink, IconMail, IconMapPin, IconPhone, IconWorld } from "@tabler/icons-react";
-import { PhoneItem } from "./phone-item";
-import { USER } from "@/features/protfolio-page/data/user";
-import { LinkIcon, MapPinIcon } from "lucide-react";
-import { EmailItem } from "./email-item";
+import Image from "next/image"
+import { LinkIcon, MapPinIcon } from "lucide-react"
+
+import { Block, BlockContent } from "@/components/block"
+import {
+  IntroItem,
+  IntroItemContent,
+  IntroItemIcon,
+  IntroItemLink,
+} from "@/components/intro-item"
+import { USER } from "@/features/protfolio-page/data/user"
+
+import { EmailItem } from "./email-item"
+import { PhoneItem } from "./phone-item"
 
 export function Overview() {
   return (
     <Block>
-      <BlockContent className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5">
+      <BlockContent className="grid grid-cols-1 gap-x-4 gap-y-2.5 sm:grid-cols-2">
         <IntroItem className="col-span-1 sm:col-span-2">
           <IntroItemIcon>
-            <img src="/capgemini-logo.png" alt="Capgemini Logo" className="" />
+            <Image
+              src="/capgemini-logo.png"
+              alt="Capgemini Logo"
+              width={24}
+              height={24}
+            />
           </IntroItemIcon>
           <IntroItemContent>
             <IntroItemLink
-              href={"https://www.capgemini.com"}
+              href="https://www.capgemini.com"
               aria-label={`Job: ${"Capgemini"}`}
             >
               Software Engineer @Capgemini
@@ -26,11 +38,17 @@ export function Overview() {
 
         <IntroItem className="col-span-1 sm:col-span-2">
           <IntroItemIcon>
-            <img src="/cisco-logo.png" alt="Cisco Logo" className="not-dark:invert" />
+            <Image
+              src="/cisco-logo.png"
+              alt="Cisco Logo"
+              width={24}
+              height={24}
+              className="not-dark:invert"
+            />
           </IntroItemIcon>
           <IntroItemContent>
             <IntroItemLink
-              href={"https://www.cisco.com"}
+              href="https://www.cisco.com"
               aria-label={`Job: ${"Cisco"}`}
             >
               Cisco Optical Network Controller (CONC) - Client Project
@@ -58,7 +76,7 @@ export function Overview() {
           </IntroItemIcon>
           <IntroItemContent>
             <IntroItemLink
-              href={"https://www.n-s-r.dev"}
+              href="https://www.n-s-r.dev"
               aria-label={`Website: ${"n-s-r.dev"}`}
             >
               n-s-r.dev

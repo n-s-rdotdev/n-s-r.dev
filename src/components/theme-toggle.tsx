@@ -16,7 +16,7 @@ export function ThemeToggle() {
 
   const { setMetaColor } = useMetaColor()
 
-  const switchTheme = (sound = true) => {
+  const switchTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
     setMetaColor(
       resolvedTheme === "dark"
@@ -25,7 +25,7 @@ export function ThemeToggle() {
     )
   }
 
-  useHotkeys("d", () => switchTheme(false))
+  useHotkeys("d", switchTheme)
 
   return (
     <Tooltip>
@@ -34,7 +34,7 @@ export function ThemeToggle() {
             className="border-none"
             variant="ghost"
             size="icon-sm"
-            onClick={() => switchTheme()}
+            onClick={switchTheme}
           >
             <MoonIcon className="relative hidden after:absolute after:-inset-2 [html.dark_&]:block" />
             <SunMediumIcon className="relative hidden after:absolute after:-inset-2 [html.light_&]:block" />

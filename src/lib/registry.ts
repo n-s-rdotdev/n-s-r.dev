@@ -1,32 +1,40 @@
 import { promises as fs } from "fs"
 import { LRUCache } from "lru-cache"
 import path from "path"
-import type { registryItemFileSchema } from "shadcn/schema"
-import { registryItemSchema } from "shadcn/schema"
-import type { z } from "zod"
+import { registryItemSchema, type RegistryItem } from "shadcn/schema"
 
 import { Index } from "@/__registry__"
 
+type RegistryItemFile = NonNullable<RegistryItem["files"]>[number]
+type MissingRegistryItem = { kind: "missing" }
+type RegistryCacheEntry = RegistryItem | MissingRegistryItem
+
+const MISSING_REGISTRY_ITEM: MissingRegistryItem = { kind: "missing" }
+
 // LRU cache for cross-request caching of registry items.
 // File reads are I/O-bound, so caching improves dev server performance.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const registryCache = new LRUCache<string, any>({
+const registryCache = new LRUCache<string, RegistryCacheEntry>({
   max: 500,
   ttl: 1000 * 60 * 5, // 5 minutes (shorter for dev to pick up changes).
 })
 
-export async function getRegistryItem(name: string) {
+export async function getRegistryItem(name: string): Promise<RegistryItem | null> {
   const cacheKey = name
 
   // Check cache first.
   if (registryCache.has(cacheKey)) {
-    return registryCache.get(cacheKey)
+    const cachedItem = registryCache.get(cacheKey)
+    if (!cachedItem || "kind" in cachedItem) {
+      return null
+    }
+
+    return cachedItem
   }
 
   const item = Index[name]
 
   if (!item) {
-    registryCache.set(cacheKey, null)
+    registryCache.set(cacheKey, MISSING_REGISTRY_ITEM)
     return null
   }
 
@@ -34,13 +42,15 @@ export async function getRegistryItem(name: string) {
   const result = registryItemSchema.safeParse(item)
 
   if (!result.success) {
-    registryCache.set(cacheKey, null)
+    registryCache.set(cacheKey, MISSING_REGISTRY_ITEM)
     return null
   }
 
+  const registryItem = result.data
+
   // Read all files in parallel.
-  let files: typeof result.data.files = await Promise.all(
-    item.files.map(async (file: z.infer<typeof registryItemFileSchema>) => {
+  let files: RegistryItemFile[] = await Promise.all(
+    (registryItem.files ?? []).map(async (file: RegistryItemFile) => {
       const content = await getFileContent(file)
       const relativePath = path.relative(process.cwd(), file.path)
 
@@ -56,13 +66,13 @@ export async function getRegistryItem(name: string) {
   files = fixFilePaths(files)
 
   const parsed = registryItemSchema.safeParse({
-    ...result.data,
+    ...registryItem,
     files,
   })
 
   if (!parsed.success) {
     console.error(parsed.error.message)
-    registryCache.set(cacheKey, null)
+    registryCache.set(cacheKey, MISSING_REGISTRY_ITEM)
     return null
   }
 
@@ -72,7 +82,7 @@ export async function getRegistryItem(name: string) {
   return parsed.data
 }
 
-async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
+async function getFileContent(file: RegistryItemFile): Promise<string> {
   let code = await fs.readFile(file.path, "utf-8")
 
   // Some registry items uses default export.
@@ -112,8 +122,8 @@ export function fixImport(content: string) {
   return content.replace(regex, replacement)
 }
 
-function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
-  if (!files) {
+function fixFilePaths(files: RegistryItem["files"]): RegistryItemFile[] {
+  if (!files?.length) {
     return []
   }
 
@@ -130,7 +140,7 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
   })
 }
 
-function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
+function getFileTarget(file: RegistryItemFile): string {
   let target = file.target
 
   if (!target || target === "") {

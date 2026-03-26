@@ -1,10 +1,15 @@
 "use server"
 
-import { registryItemSchema } from "shadcn/schema"
-import type { z } from "zod"
+import { registryItemSchema, type RegistryItem } from "shadcn/schema"
+
+type RegistryItemType = RegistryItem["type"]
+
+function isRegistryItem(block: unknown): block is RegistryItem {
+  return registryItemSchema.safeParse(block).success
+}
 
 export async function getAllBlockIds(
-  types: z.infer<typeof registryItemSchema>["type"][] = ["registry:block"],
+  types: RegistryItemType[] = ["registry:block"],
   categories: string[] = []
 ): Promise<string[]> {
   const blocks = await getAllBlocks(types, categories)
@@ -12,28 +17,13 @@ export async function getAllBlockIds(
 }
 
 export async function getAllBlocks(
-  types: z.infer<typeof registryItemSchema>["type"][] = ["registry:block"],
+  types: RegistryItemType[] = ["registry:block"],
   categories: string[] = []
-) {
+): Promise<RegistryItem[]> {
   const { Index } = await import("@/__registry__")
 
-  // Collect all blocks from all styles.
-  const allBlocks: z.infer<typeof registryItemSchema>[] = []
-
-  for (const itemName in Index) {
-    const item = Index[itemName]
-    allBlocks.push(item)
-  }
-
-  // Validate each block.
-  const validatedBlocks = allBlocks
-    .map((block) => {
-      const result = registryItemSchema.safeParse(block)
-      return result.success ? result.data : null
-    })
-    .filter(
-      (block): block is z.infer<typeof registryItemSchema> => block !== null
-    )
+  // Collect all blocks from all styles and keep only valid registry items.
+  const validatedBlocks = Object.values(Index).filter(isRegistryItem)
 
   return validatedBlocks.filter(
     (block) =>

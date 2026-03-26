@@ -1,11 +1,11 @@
 "use client"
 
 import { EllipsisIcon, LinkIcon, ShareIcon } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,17 +13,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SITE_INFO } from "@/config/site"
+import { useIsClient } from "@/hooks/use-is-client"
 import { copyText } from "@/utils/copy"
 import { toAbsoluteUrl } from "@/utils/url"
 
 export function PostShareMenu({ title, url }: { title: string; url: string }) {
-  const [origin, setOrigin] = useState(SITE_INFO.url)
-  const [canShare, setCanShare] = useState(false)
-
-  useEffect(() => {
-    setOrigin(window.location.origin)
-    setCanShare("share" in navigator)
-  }, [])
+  const isClient = useIsClient()
+  const origin = isClient ? window.location.origin : SITE_INFO.url
+  const canShare = isClient && "share" in navigator
 
   const absoluteUrl = useMemo(() => toAbsoluteUrl(url, origin), [origin, url])
 
