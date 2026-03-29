@@ -17,7 +17,7 @@ export function QuickSetupComponents() {
       </BlockSubHeader>
       <Separator />
       <BlockContent className="bg-accent/20">
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {posts
             .slice()
             .sort((a, b) =>
@@ -30,7 +30,7 @@ export function QuickSetupComponents() {
                 key={post.slug}
                 href={`/components/${post.slug}`}
                 className={cn(
-                  "group flex items-center gap-4 p-4 transition-[background-color] ease-out bg-background hover:bg-accent/30 rounded border",
+                  "group flex items-center gap-4 px-4 py-6 transition-[background-color] ease-out bg-background hover:bg-accent/30 rounded border",
                 )}
               >
                 <div className="relative flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background">
@@ -53,7 +53,12 @@ export function QuickSetupComponents() {
             ))}
         </div>
       </BlockContent>
-      <Separator />
+      <BlockContent className="p-2">
+        <div className="border border-dashed p-2 rounded text-center text-muted-foreground">
+          More Quick-Setup components are coming soon!
+        </div>
+      </BlockContent>
+      {/* <Separator /> */}
     </Block>
   )
 }

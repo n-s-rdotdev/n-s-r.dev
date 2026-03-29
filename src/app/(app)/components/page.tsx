@@ -10,6 +10,10 @@ export default function ComponentsPage() {
       <ComponentsHeader />
       <BlockSeparator />
 
+      <QuickSetupComponents />
+
+      <LineSeparator className="my-4" />
+
       <Block>
         <BlockSubHeader>
           UI Components
@@ -23,9 +27,7 @@ export default function ComponentsPage() {
           </div>
         </BlockContent>
       </Block>
-      <LineSeparator className="my-4" />
 
-      <QuickSetupComponents />
     </div>
   )
 }

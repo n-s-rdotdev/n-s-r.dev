@@ -1,5 +1,5 @@
 import { Footer } from "@/components/footer"
-import { SiteHeader } from "@/components/header"
+import { SiteHeader } from "@/components/site-header"
 
 export default function RootLayout({
   children,
