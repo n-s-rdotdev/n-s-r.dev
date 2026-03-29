@@ -1,14 +1,18 @@
+import { IconBrandJavascript, IconBrandTypescript } from "@tabler/icons-react";
+
 export const TECH_STACK = [
   {
     key: "typescript",
     title: "TypeScript",
     href: "https://www.typescriptlang.org/",
+    icon: IconBrandTypescript,
     categories: ["Language"],
   },
   {
     key: "js",
     title: "JavaScript",
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    icon: IconBrandJavascript,
     categories: ["Language"],
   },
   {
