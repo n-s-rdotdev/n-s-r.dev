@@ -18,6 +18,7 @@ const iconMap: Record<
   education: GraduationCapIcon,
   business: BriefcaseBusinessIcon,
   idea: LightbulbIcon,
+  work: BriefcaseBusinessIcon,
 }
 
 export function ExperienceIcon({

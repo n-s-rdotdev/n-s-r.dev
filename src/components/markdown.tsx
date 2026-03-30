@@ -3,7 +3,7 @@ import rehypeExternalLinks from "rehype-external-links"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 
-// import { rehypeAddQueryParams } from "@/lib/rehype-add-query-params"
+import { rehypeAddQueryParams } from "@/lib/rehype-add-query-params"
 
 export function Markdown(props: React.ComponentProps<typeof MarkdownAsync>) {
   return (
@@ -15,7 +15,7 @@ export function Markdown(props: React.ComponentProps<typeof MarkdownAsync>) {
           rehypeExternalLinks,
           { target: "_blank", rel: "nofollow noopener noreferrer" },
         ],
-        // [rehypeAddQueryParams, { params: { utm_source: "n-s-r.dev" } }],
+        [rehypeAddQueryParams, { params: { utm_source: "n-s-r.dev" } }],
       ]}
       {...props}
     />

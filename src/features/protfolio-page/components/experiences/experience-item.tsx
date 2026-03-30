@@ -2,6 +2,8 @@ import Image from "next/image"
 
 import type { Experience } from "../../types/experiences"
 import { ExperiencePositionItem } from "./experience-position-item"
+import { ProseMono } from "@/components/ui/typography"
+import { Markdown } from "@/components/markdown"
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
@@ -50,6 +52,12 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           </span>
         )}
       </div>
+
+      {experience.description && (
+        <ProseMono className="-mt-3 ml-9 text-sm text-muted-foreground">
+          <Markdown>{experience.description}</Markdown>
+        </ProseMono>
+      )}
 
       <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
         {experience.positions.map((position) => (

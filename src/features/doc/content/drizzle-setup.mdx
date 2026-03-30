@@ -11,6 +11,60 @@ updatedAt: 2026-03-26
 
 - This is the setup for Drizzle + Neon in your Next.js project.
 
+## Folder Structure
+
+Use the layout that matches your project structure:
+
+<Tabs defaultValue="with-src">
+<TabsList>
+  <TabsTrigger value="with-src">With src</TabsTrigger>
+  <TabsTrigger value="without-src">Without src</TabsTrigger>
+</TabsList>
+
+<TabsContent value="with-src">
+
+```txt
+<project-root>
+├── src/
+|   └── app/
+│   └── db/
+│       ├── schema.ts
+│       └── index.ts
+├── .env
+├── drizzle.config.ts
+├── package.json
+└── tsconfig.json
+```
+
+```bash
+mkdir -p drizzle src/db
+touch .env drizzle.config.ts src/db/index.ts src/db/schema.ts
+```
+
+</TabsContent>
+
+<TabsContent value="without-src">
+
+```txt
+<project-root>
+├── app/
+├── db/
+│   ├── schema.ts
+│   └── index.ts
+├── .env
+├── drizzle.config.ts
+├── package.json
+└── tsconfig.json
+```
+
+```bash
+mkdir -p drizzle db
+touch .env drizzle.config.ts db/index.ts db/schema.ts
+```
+
+</TabsContent>
+</Tabs>
+
 ## Installation
 
 <CodeTabs>
@@ -37,8 +91,8 @@ DATABASE_URL=
 ```bash
 npx drizzle-kit push
 ```
-
-<Step>[Optional] If you are using `src` package, move `src/drizzle.config.ts` to `root`.</Step>
+ 
+<Step>[Optional] If your app uses `src`, then move `drizzle.config.ts` from `src/drizzle.config.ts` to the project root.</Step>
 
 </Steps>
 
@@ -64,7 +118,7 @@ npm install -D drizzle-kit tsx
 
 <ComponentSource
   src="src/db/index.ts"
-  title="/db/index.ts"
+  title="src/db/index.ts"
   showLineNumbers
 />
 
@@ -72,7 +126,7 @@ npm install -D drizzle-kit tsx
 
 <ComponentSource
   src="src/db/schema.ts"
-  title="/db/schema.ts"
+  title="src/db/schema.ts"
   showLineNumbers
 />
 
