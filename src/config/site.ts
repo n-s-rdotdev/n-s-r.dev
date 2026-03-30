@@ -16,13 +16,16 @@ export const META_THEME_COLORS = {
 
 export const MAIN_NAV: NavItem[] = [
   {
-    title: "Home",
-    href: "/",
-  },
-  {
     title: "Components",
     href: "/components",
   },
+]
+export const MOBILE_NAV: NavItem[] = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  ...MAIN_NAV,
 ]
 
 export const X_USERNAME = "@n_s_rdotdev"

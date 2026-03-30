@@ -1,18 +1,17 @@
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import { Suspense } from "react"
 
 import { DesktopNav } from "@/components/desktop-nav"
 import { Nav } from "@/components/nav"
-import { MAIN_NAV } from "@/config/site"
+import { MAIN_NAV, MOBILE_NAV } from "@/config/site"
 import { cn } from "@/lib/utils"
-
+import { getAllDocs } from "@/features/doc/data/documents"
+import { DocPreview } from "@/features/doc/types/document"
 import { NSRMark } from "./n-s-r-mark"
 import { SiteHeaderMark } from "./site-header-mark"
 import { ThemeToggle } from "./theme-toggle"
 import { Separator } from "./ui/separator"
-import dynamic from "next/dynamic"
-import { getAllDocs } from "@/features/doc/data/documents"
-import { DocPreview } from "@/features/doc/types/document"
 
 const CommandMenu = dynamic(() =>
   import("@/components/command-menu").then((mod) => mod.CommandMenu)
@@ -86,9 +85,7 @@ export function SiteHeader() {
           orientation="vertical"
           className="mr-1 ml-2.5 data-vertical:h-6 data-vertical:self-center"
         />
-        <Suspense>
-          <MobileNav items={MAIN_NAV} />
-        </Suspense>
+        <MobileNav items={MOBILE_NAV} />
       </div>
     </>
   )

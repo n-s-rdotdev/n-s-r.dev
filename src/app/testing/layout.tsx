@@ -1,4 +1,4 @@
-import { Footer } from "@/components/footer"
+import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 
 export default function Layout({
@@ -19,7 +19,7 @@ export default function Layout({
             <div className="row-span-full row-start-1 hidden border-x border-x-(--pattern-fg) bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] bg-fixed [--pattern-fg:var(--color-black)]/5 lg:col-start-3 lg:block dark:[--pattern-fg:var(--color-white)]/10"></div>
           </div>
         </div>
-        <Footer />
+        <SiteFooter />
       </div>
     </div>
   )
