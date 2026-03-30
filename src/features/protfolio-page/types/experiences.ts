@@ -1,6 +1,6 @@
 export type ExperiencePositionIcon =
   /** Icon key used to render the position category in the UI. */
-  "code" | "design" | "education" | "business" | "idea"
+  "code" | "design" | "education" | "business" | "idea" | "work"
 
 export type ExperiencePosition = {
   id: string
@@ -32,6 +32,8 @@ export type Experience = {
   companyLogo?: string
   /** URL to the company's website. */
   companyWebsite?: string
+  /** Optional description or overview of the company. */
+  description?: string
   /** Roles held at this company; keep newest first for display. */
   positions: ExperiencePosition[]
   /** Marks the company as the current employer for highlighting. */
