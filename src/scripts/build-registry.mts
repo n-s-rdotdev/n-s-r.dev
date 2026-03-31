@@ -30,8 +30,8 @@ export const Index: Record<string, any> = {`
 
     const componentFilePath = item.files[0].path
     const componentPath = componentFilePath.startsWith("src/")
-      ? componentFilePath.replace("src/", "@/")
-      : `@/registry/${componentFilePath}`
+      ? componentFilePath.replace(/^src\//, "@/")
+      : `@/registry/${componentFilePath.replace(/^\/+/, "")}`
 
     index += `
   "${item.name}": {
@@ -39,9 +39,10 @@ export const Index: Record<string, any> = {`
     description: "${item.description ?? ""}",
     type: "${item.type}",
     files: [${item.files.map((file) => {
-      const filePath = file.path.startsWith("src/")
-        ? file.path
-        : `src/registry/${file.path}`
+      const normalizedFilePath = file.path.replace(/^\/+/, "")
+      const filePath = normalizedFilePath.startsWith("src/")
+        ? normalizedFilePath
+        : `src/registry/${normalizedFilePath}`
       return `{
       path: "${filePath}",
       type: "${file.type}",
@@ -50,7 +51,7 @@ export const Index: Record<string, any> = {`
     })}],
     component: React.lazy(async () => {
       const mod = await import("${componentPath}")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${item.name}"
       return { default: mod.default || mod[exportName] }
     }),
     categories: ${JSON.stringify(item.categories)},
@@ -74,13 +75,18 @@ export const Index: Record<string, any> = {`
             ...item,
             files:
               item.files?.map((file) => {
-                if (file.path.startsWith("src/")) {
-                  return file
+                const normalizedFilePath = file.path.replace(/^\/+/, "")
+
+                if (normalizedFilePath.startsWith("src/")) {
+                  return {
+                    ...file,
+                    path: normalizedFilePath,
+                  }
                 }
 
                 return {
                   ...file,
-                  path: `src/registry/${file.path}`,
+                  path: `src/registry/${normalizedFilePath}`,
                 }
               }) ?? [],
           }

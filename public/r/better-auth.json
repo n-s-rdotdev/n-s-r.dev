@@ -9,19 +9,19 @@
   ],
   "files": [
     {
-      "path": "src/registry//lib/auth/auth.ts",
+      "path": "src/registry/quick-setups/better-auth/lib/auth/auth.ts",
       "content": "import { betterAuth } from \"better-auth\";\nimport { drizzleAdapter } from \"better-auth/adapters/drizzle\";\nimport { db } from \"@/db\"; // your drizzle instance\n\nexport const auth = betterAuth({\n  database: drizzleAdapter(db, {\n    provider: \"pg\", // or \"mysql\", \"sqlite\"\n  }),\n});",
       "type": "registry:lib",
       "target": "src/lib/auth.ts"
     },
     {
-      "path": "src/registry//lib/auth-client/auth-client.ts",
+      "path": "src/registry/quick-setups/better-auth/lib/auth-client/auth-client.ts",
       "content": "import { createAuthClient } from \"better-auth/react\"\nexport const authClient = createAuthClient({\n  /** The base URL of the server (optional if you're using the same domain) */\n  baseURL: \"http://localhost:3000\"\n})",
       "type": "registry:lib",
       "target": "src/lib/auth-client/auth-client.ts"
     },
     {
-      "path": "src/registry//api/auth/route/route.ts",
+      "path": "src/registry/quick-setups/better-auth/api/auth/route/route.ts",
       "content": "import { auth } from \"@/lib/auth\"; // path to your auth file\nimport { toNextJsHandler } from \"better-auth/next-js\";\n\nexport const { POST, GET } = toNextJsHandler(auth);",
       "type": "registry:file",
       "target": "src/api/auth/route/route.ts"
