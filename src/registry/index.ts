@@ -13,17 +13,17 @@ export const registry = {
       "dependencies": ["better-auth"],
       "files": [
         {
-          "path": "/lib/auth/auth.ts",
+          "path": "quick-setups/better-auth/lib/auth/auth.ts",
           "type": "registry:lib",
           "target": "src/lib/auth.ts",
         },
         {
-          "path": "/lib/auth-client/auth-client.ts",
+          "path": "quick-setups/better-auth/lib/auth-client/auth-client.ts",
           "type": "registry:lib",
           "target": "src/lib/auth-client/auth-client.ts",
         },
         {
-          "path": "/api/auth/route/route.ts",
+          "path": "quick-setups/better-auth/api/auth/route/route.ts",
           "type": "registry:file",
           "target": "src/api/auth/route/route.ts",
         },
@@ -45,17 +45,17 @@ export const registry = {
       ],
       "files": [
         {
-          "path": "/db/db/db.ts",
+          "path": "quick-setups/drizzle/db/db.ts",
           "type": "registry:file",
           "target": "db/index.ts"
         },
         {
-          "path": "/db/schema/schema.ts",
+          "path": "quick-setups/drizzle/schema/schema.ts",
           "type": "registry:file",
           "target": "db/schema.ts"
         },
         {
-          "path": "/db/config/drizzle-config/drizzle.config.ts",
+          "path": "quick-setups/drizzle/config/drizzle-config/drizzle.config.ts",
           "type": "registry:file",
           "target": "drizzle.config.ts"
         }

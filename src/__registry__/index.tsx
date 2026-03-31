@@ -12,21 +12,21 @@ export const Index: Record<string, any> = {
     description: "A collection of authentication components and utilities for Next.js applications.",
     type: "registry:block",
     files: [{
-      path: "src/registry//lib/auth/auth.ts",
+      path: "src/registry/quick-setups/better-auth/lib/auth/auth.ts",
       type: "registry:lib",
       target: "src/lib/auth.ts",
     },{
-      path: "src/registry//lib/auth-client/auth-client.ts",
+      path: "src/registry/quick-setups/better-auth/lib/auth-client/auth-client.ts",
       type: "registry:lib",
       target: "src/lib/auth-client/auth-client.ts",
     },{
-      path: "src/registry//api/auth/route/route.ts",
+      path: "src/registry/quick-setups/better-auth/api/auth/route/route.ts",
       type: "registry:file",
       target: "src/api/auth/route/route.ts",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry//lib/auth/auth.ts")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import("@/registry/quick-setups/better-auth/lib/auth/auth.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "better-auth"
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,
@@ -37,21 +37,21 @@ export const Index: Record<string, any> = {
     description: "A collection of database utilities and configurations for Drizzle ORM.",
     type: "registry:block",
     files: [{
-      path: "src/registry//db/db/db.ts",
+      path: "src/registry/quick-setups/drizzle/db/db.ts",
       type: "registry:file",
       target: "db/index.ts",
     },{
-      path: "src/registry//db/schema/schema.ts",
+      path: "src/registry/quick-setups/drizzle/schema/schema.ts",
       type: "registry:file",
       target: "db/schema.ts",
     },{
-      path: "src/registry//db/config/drizzle-config/drizzle.config.ts",
+      path: "src/registry/quick-setups/drizzle/config/drizzle-config/drizzle.config.ts",
       type: "registry:file",
       target: "drizzle.config.ts",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry//db/db/db.ts")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import("@/registry/quick-setups/drizzle/db/db.ts")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "drizzle"
       return { default: mod.default || mod[exportName] }
     }),
     categories: undefined,

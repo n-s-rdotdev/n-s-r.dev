@@ -1,7 +1,7 @@
 import { GeistMono } from "geist/font/mono"
 import { GeistPixelSquare, GeistPixelCircle, GeistPixelGrid, GeistPixelLine, GeistPixelTriangle } from "geist/font/pixel"
 // import { GeistSans } from "geist/font/sans"
-import { Bricolage_Grotesque, Geist } from "next/font/google"
+import { Geist } from "next/font/google"
 // Bricolage Grotesque
 import { cn } from "@/lib/utils"
 

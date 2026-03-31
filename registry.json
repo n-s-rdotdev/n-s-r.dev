@@ -13,17 +13,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/lib/auth/auth.ts",
+          "path": "src/registry/quick-setups/better-auth/lib/auth/auth.ts",
           "type": "registry:lib",
           "target": "lib/auth.ts"
         },
         {
-          "path": "src/registry/lib/auth-client/auth-client.ts",
+          "path": "src/registry/quick-setups/better-auth/lib/auth-client/auth-client.ts",
           "type": "registry:lib",
           "target": "lib/auth-client/auth-client.ts"
         },
         {
-          "path": "src/registry/api/auth/route/route.ts",
+          "path": "src/registry/quick-setups/better-auth/api/auth/route/route.ts",
           "type": "registry:file",
           "target": "api/auth/route/route.ts"
         }
@@ -44,17 +44,17 @@
       ],
       "files": [
         {
-          "path": "src/registry/db/db/db.ts",
+          "path": "src/registry/quick-setups/drizzle/db/db.ts",
           "type": "registry:file",
           "target": "db/index.ts"
         },
         {
-          "path": "src/registry/db/schema/schema.ts",
+          "path": "src/registry/quick-setups/drizzle/schema/schema.ts",
           "type": "registry:file",
           "target": "db/schema.ts"
         },
         {
-          "path": "src/registry/db/config/drizzle-config/drizzle.config.ts",
+          "path": "src/registry/quick-setups/drizzle/config/drizzle-config/drizzle.config.ts",
           "type": "registry:file",
           "target": "drizzle.config.ts"
         }
