@@ -5,6 +5,7 @@ import { ProfileHeader } from "@/features/protfolio-page/components/profile-head
 import { Overview } from "@/features/protfolio-page/components/overview"
 import { SocialLink } from "@/features/protfolio-page/components/social-link"
 import { Experiences } from "@/features/protfolio-page/components/experiences"
+import { TechStack } from "@/features/protfolio-page/components/tech-stack"
 
 export default function Page() {
   return (
@@ -19,6 +20,9 @@ export default function Page() {
       <LineSeparator />
 
       <SocialLink />
+      <BlockSeparator />
+
+      <TechStack />
       <BlockSeparator />
 
       <Experiences />
