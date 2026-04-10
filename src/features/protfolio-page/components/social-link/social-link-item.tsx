@@ -2,8 +2,8 @@ import { ArrowUpRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import { SocialLink } from "../types/social-links"
-import { SocialLinkIcon } from "./social-link/social-link-icon"
+import { SocialLink } from "../../types/social-links"
+import { SocialLinkIcon } from "./social-link-icon"
 
 const UTM_PARAMS = {
   utm_source: "n-s-r.dev",

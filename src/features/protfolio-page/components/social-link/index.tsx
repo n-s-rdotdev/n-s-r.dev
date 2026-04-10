@@ -2,7 +2,7 @@ import { Block, BlockContent } from "@/components/block"
 import { Separator } from "@/components/ui/separator"
 
 import { SOCIAL_LINKS } from "../../data/social-links"
-import { SocialLinkItem } from "../social-link-item"
+import { SocialLinkItem } from "./social-link-item"
 
 export function SocialLink() {
   return (
