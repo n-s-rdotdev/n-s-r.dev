@@ -17,12 +17,24 @@ export function ThemeToggle() {
   const { setMetaColor } = useMetaColor()
 
   const switchTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-    setMetaColor(
-      resolvedTheme === "dark"
-        ? META_THEME_COLORS.light
-        : META_THEME_COLORS.dark
-    )
+    if (!document.startViewTransition) {
+      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+      setMetaColor(
+        resolvedTheme === "dark"
+          ? META_THEME_COLORS.light
+          : META_THEME_COLORS.dark
+      )
+      return
+    }
+    document.startViewTransition(() => {
+      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+      setMetaColor(
+        resolvedTheme === "dark"
+          ? META_THEME_COLORS.light
+          : META_THEME_COLORS.dark
+      )
+    })
+
   }
 
   useHotkeys("d", switchTheme)
@@ -31,15 +43,15 @@ export function ThemeToggle() {
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
-            className="border-none"
-            variant="ghost"
-            size="icon-sm"
-            onClick={switchTheme}
-          >
-            <MoonIcon className="relative hidden after:absolute after:-inset-2 [html.dark_&]:block" />
-            <SunMediumIcon className="relative hidden after:absolute after:-inset-2 [html.light_&]:block" />
-            <span className="sr-only">Theme Toggle</span>
-          </Button>
+          className="border-none"
+          variant="ghost"
+          size="icon-sm"
+          onClick={switchTheme}
+        >
+          <MoonIcon className="relative hidden after:absolute after:-inset-2 [html.dark_&]:block" />
+          <SunMediumIcon className="relative hidden after:absolute after:-inset-2 [html.light_&]:block" />
+          <span className="sr-only">Theme Toggle</span>
+        </Button>
       </TooltipTrigger>
       <TooltipContent className="pr-2 pl-3">
         <div className="flex items-center gap-3">

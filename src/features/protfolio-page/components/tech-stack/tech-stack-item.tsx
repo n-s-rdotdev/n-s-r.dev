@@ -3,7 +3,6 @@ import { TechStack } from "../../types/tech-stack"
 import { cn } from "@/lib/utils"
 
 export function TechStackItem({ icon, title, href, theming }: TechStack) {
-  console.log(icon)
   return (
     <Tooltip>
       <TooltipTrigger>
