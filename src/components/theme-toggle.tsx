@@ -1,7 +1,6 @@
 "use client"
 
 import { useTheme } from "next-themes"
-import { useHotkeys } from "react-hotkeys-hook"
 
 import { MoonIcon } from "./animated-icons/moon"
 import { SunMediumIcon } from "./animated-icons/sun-medium"
@@ -9,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
 import { Button } from "./ui/button"
 import { Kbd } from "./ui/kbd"
 import { useMetaColor } from "@/hooks/use-meta-color"
-import { META_THEME_COLORS } from "@/config/site"
+import { toggleThemeWithTransition } from "@/lib/theme-transition"
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
@@ -17,27 +16,12 @@ export function ThemeToggle() {
   const { setMetaColor } = useMetaColor()
 
   const switchTheme = () => {
-    if (!document.startViewTransition) {
-      setTheme(resolvedTheme === "dark" ? "light" : "dark")
-      setMetaColor(
-        resolvedTheme === "dark"
-          ? META_THEME_COLORS.light
-          : META_THEME_COLORS.dark
-      )
-      return
-    }
-    document.startViewTransition(() => {
-      setTheme(resolvedTheme === "dark" ? "light" : "dark")
-      setMetaColor(
-        resolvedTheme === "dark"
-          ? META_THEME_COLORS.light
-          : META_THEME_COLORS.dark
-      )
+    toggleThemeWithTransition({
+      resolvedTheme,
+      setTheme,
+      setMetaColor,
     })
-
   }
-
-  useHotkeys("d", switchTheme)
 
   return (
     <Tooltip>
